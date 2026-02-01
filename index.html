@@ -32,16 +32,6 @@ body {
     justify-content: center;
     flex-direction: column;
     z-index: 100;
-    transition: 1s;
-}
-
-.intro-box {
-    animation: fadeIn 2s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 button {
@@ -65,18 +55,17 @@ button {
     color: white;
 }
 
-/* MAIN CONTENT */
+/* MAIN CONTAINER */
 
 .container {
     display: none;
     background: white;
     padding: 20px;
-    margin: 40px auto;
+    margin: 30px auto;
     width: 90%;
-    max-width: 750px;
+    max-width: 800px;
     border-radius: 15px;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
-    animation: fadeIn 2s;
 }
 
 h1 {
@@ -84,11 +73,15 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* SLIDESHOW */
+/* PHOTO SECTION */
+
+.gallery {
+    margin-top: 20px;
+}
 
 .slideshow {
     position: relative;
-    max-width: 300px;
+    max-width: 320px;
     margin: 20px auto;
 }
 
@@ -96,6 +89,7 @@ h1 {
     width: 100%;
     border-radius: 15px;
     display: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 /* TYPING MESSAGE */
@@ -108,7 +102,7 @@ h1 {
     padding: 10px;
 }
 
-/* HEART ANIMATION */
+/* HEARTS */
 
 .heart {
     position: fixed;
@@ -129,12 +123,10 @@ h1 {
     color: #ff4d6d;
 }
 
-/* MUSIC BUTTON */
-
 .musicBtn {
-    margin-top: 10px;
     background: #ff4d6d;
     color: white;
+    margin-top: 10px;
 }
 
 </style>
@@ -149,15 +141,11 @@ h1 {
 <!-- INTRO PAGE -->
 
 <div id="intro">
-  <div class="intro-box">
     <h2>Hey Sahil 😍</h2>
-    <br>
     <h3>Will You Be My Valentine? 💘</h3>
-    <br>
 
     <button id="yesBtn" onclick="openSite()">YES 🥰</button>
     <button id="noBtn" onclick="growYes()">NO 😢</button>
-  </div>
 </div>
 
 <!-- MAIN WEBSITE -->
@@ -166,12 +154,18 @@ h1 {
 
 <h1>For My Sahil ❤️</h1>
 
-<h3>Our Beautiful Memories 📸</h3>
+<h2>Our Photo Memories 📸</h2>
 
-<div class="slideshow">
-    <img class="slides" src="photo1.jpg">
-    <img class="slides" src="photo2.jpg">
-    <img class="slides" src="photo3.jpg">
+<div class="gallery">
+    <div class="slideshow">
+        <img class="slides" src="photo1.jpg">
+        <img class="slides" src="photo2.jpg">
+        <img class="slides" src="photo3.jpg">
+        <img class="slides" src="photo4.jpg">
+        <img class="slides" src="photo5.jpg">
+        <img class="slides" src="photo6.jpg">
+        <img class="slides" src="photo7.jpg">
+    </div>
 </div>
 
 <button class="musicBtn" onclick="playSong()">Play Song 🎵</button>
@@ -209,7 +203,7 @@ function playSong() {
     document.getElementById("song").play();
 }
 
-/* FALLING HEARTS */
+/* HEART ANIMATION */
 
 function startHearts() {
     setInterval(() => {
@@ -224,7 +218,7 @@ function startHearts() {
     }, 300);
 }
 
-/* SLIDESHOW */
+/* 7 PHOTO SLIDESHOW */
 
 let slideIndex = 0;
 
@@ -240,32 +234,26 @@ function startSlideshow() {
 
     slides[slideIndex-1].style.display = "block";
 
-    setTimeout(startSlideshow, 2500);
+    setTimeout(startSlideshow, 2200);
 }
 
-/* TYPING EFFECT */
+/* TYPING MESSAGE */
 
 let text = `Dear Sahil 💌,
 
-Every photo here holds a beautiful memory of us.  
-You are the reason behind my smiles, my happiness, and my peace.
+These 7 photos are not just pictures – they are memories of us, our laughs, our moments, and our love.
 
-With you, even normal days feel special.  
-You understand me, care for me, and stand by me.
+Every moment spent with you becomes special automatically.
 
-I feel safe with you.  
-I feel loved with you.  
-I feel complete with you.
+You are my happiness, my comfort, my safe place, and my favorite person in this world 🌍
 
-You are not just my boyfriend –  
-you are my best friend, my comfort place, and my favorite human 💕
+Thank you for loving me, caring for me, and always being there for me.
 
-No matter where life takes us,  
-I will always choose YOU.
+I never want to lose you.
 
-Thank you for being in my life.
+No matter what happens, I will always choose YOU ❤️
 
-I love you forever and always 💖`;
+I love you more than words can ever express 💖`;
 
 let i = 0;
 
@@ -273,11 +261,11 @@ function startTyping() {
     if (i < text.length) {
         document.getElementById("message").innerHTML += text.charAt(i);
         i++;
-        setTimeout(startTyping, 40);
+        setTimeout(startTyping, 35);
     }
 }
 
 </script>
 
 </body>
-  </html>
+</html>
