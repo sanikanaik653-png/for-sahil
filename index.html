@@ -1,95 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Valentine Proposal 💗</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body, html { margin: 0; padding: 0; font-family: Arial, sans-serif; overflow-x: hidden; }
-#intro { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: pink; }
-#intro h1 { font-size: 3rem; color: white; margin-bottom: 30px; }
-.buttons { display: flex; gap: 20px; }
-button { padding: 15px 40px; font-size: 20px; border: none; border-radius: 40px; cursor: pointer; }
-#yesBtn { background: #ff3366; color: white; transition: transform 0.2s ease; }
-#noBtn { background: white; color: #ff3366; position: relative; transition: transform 0.2s ease; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine 💗</title>
 
-#main { display: none; min-height: 100vh; background: url("images/bg.jpg") center/cover no-repeat; }
-.overlay { background: rgba(0,0,0,0.5); min-height: 100vh; padding: 20px; color: white; text-align: center; }
-.gallery img { width: 200px; margin: 10px; border-radius: 20px; opacity: 0; transition: opacity 1s ease; }
-.text-box { max-width: 800px; margin: 30px auto; background: rgba(255,255,255,0.2); padding: 20px; border-radius: 20px; font-size: 1.2rem; }
-</style>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ----------------------------
+       GLOBAL STYLES
+    ---------------------------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background: linear-gradient(135deg,#ffd6e8,#fff1f7);
+      color: #6b0036;
+    }
+    button { cursor: pointer; border: none; outline: none; }
+
+    .hidden { display: none; }
+
+    /* ----------------------------
+       FLOATING HEARTS
+    ---------------------------- */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 0.8; }
+      to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+
+    /* ----------------------------
+       INTRO SCREEN
+    ---------------------------- */
+    .intro {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: opacity 1s ease;
+      padding: 20px;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      animation: fadeIn 2s ease;
+    }
+
+    .buttons { display: flex; gap: 30px; }
+
+    .yes-btn {
+      background: #ff4d88;
+      color: white;
+      padding: 15px 40px;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      animation: pulse 1.5s infinite;
+      transition: transform 0.3s;
+    }
+
+    .no-btn {
+      background: #ffe3ef;
+      color: #ff4d88;
+      padding: 15px 40px;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----------------------------
+       PROPOSAL SCREEN
+    ---------------------------- */
+    .proposal {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .gallery {
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .photo-card {
+      display: none;
+      animation: photoIn 1s ease forwards;
+    }
+
+    .photo-card img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    @keyframes photoIn {
+      from { opacity: 0; transform: scale(0.8) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .love-text {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.85);
+      padding: 25px;
+      border-radius: 20px;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    /* ----------------------------
+       MUSIC BUTTON
+    ---------------------------- */
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff4d88;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+
+    /* ----------------------------
+       RESPONSIVE
+    ---------------------------- */
+    @media(max-width:600px){
+      .intro h1 { font-size: 2.2rem; }
+      .love-text { font-size: 1rem; }
+    }
+
+  </style>
 </head>
 <body>
 
-<!-- INTRO -->
-<div id="intro">
-  <h1>Will you be my Valentine? 💗</h1>
-  <div class="buttons">
-    <button id="yesBtn">YES 💗</button>
-    <button id="noBtn">NO</button>
-  </div>
-</div>
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop>
+    <source src="music/enna-sona.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- MAIN -->
-<div id="main">
-  <div class="overlay">
-    <h1>Dear Sahil 💗</h1>
-    <div class="gallery">
-      <img src="images/img1.jpg">
-      <img src="images/img2.jpg">
-      <img src="images/img3.jpg">
-      <img src="images/img4.jpg">
-      <img src="images/img5.jpg">
-      <img src="images/img6.jpg">
-      <img src="images/img7.jpg">
+  <button class="music-btn" id="musicBtn">🎵</button>
+
+  <!-- INTRO -->
+  <section class="intro" id="intro">
+    <h1>Will you be my Valentine? 💗</h1>
+    <div class="buttons">
+      <button class="yes-btn" id="yesBtn">YES 💗</button>
+      <button class="no-btn" id="noBtn">NO</button>
     </div>
-    <div class="text-box">
+  </section>
+
+  <!-- PROPOSAL -->
+  <section class="proposal" id="proposal">
+    <div class="gallery">
+      <div class="photo-card"><img src="images/photo1.jpg" alt="photo1"></div>
+      <div class="photo-card"><img src="images/photo2.jpg" alt="photo2"></div>
+      <div class="photo-card"><img src="images/photo3.jpg" alt="photo3"></div>
+      <div class="photo-card"><img src="images/photo4.jpg" alt="photo4"></div>
+      <div class="photo-card"><img src="images/photo5.jpg" alt="photo5"></div>
+      <div class="photo-card"><img src="images/photo6.jpg" alt="photo6"></div>
+      <div class="photo-card"><img src="images/photo7.jpg" alt="photo7"></div>
+    </div>
+
+    <div class="love-text">
       Dear Sahil,<br><br>
       You are the best part of my life. Every Photo here reminds me how lucky I am to have you.
       You make me smile without trying. You make my world brighter.
       No matter what happens, I will always choose you.
       I love you forever. 💗
     </div>
-  </div>
-</div>
+  </section>
 
-<audio id="music" src="music/enna-sona.mp3" loop></audio>
+  <script>
+    /* ----------------------------
+       FLOATING HEARTS
+    ---------------------------- */
+    function createHeart(){
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = "💗";
+      heart.style.left = Math.random()*100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random()*4 + 's';
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(),8000);
+    }
+    setInterval(createHeart,500);
 
-<script>
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const intro = document.getElementById("intro");
-const main = document.getElementById("main");
-const music = document.getElementById("music");
+    /* ----------------------------
+       BUTTON LOGIC
+    ---------------------------- */
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const intro = document.getElementById('intro');
+    const proposal = document.getElementById('proposal');
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
 
-let scale = 1;
+    let yesScale = 1;
+    let yesClicks = 0;
 
-yesBtn.addEventListener("click", () => {
-  // Grow button a bit
-  scale += 0.15;
-  yesBtn.style.transform = `scale(${scale})`;
+    yesBtn.addEventListener('click',()=>{
+      yesScale += 0.2;
+      yesBtn.style.transform = `scale(${yesScale})`;
+      yesClicks++;
+      if(yesClicks>=3){
+        // Transition
+        intro.style.opacity=0;
+        setTimeout(()=>{
+          intro.classList.add('hidden');
+          proposal.style.backgroundImage="url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1350&q=80')";
+          proposal.style.opacity=1;
+          showPhotos();
+          music.play();
+        },1000);
+      }
+    });
 
-  // Only show main page after first click (works on all browsers)
-  intro.style.display = "none";
-  main.style.display = "block";
+    noBtn.addEventListener('mouseover',()=>{
+      const x = (Math.random()-0.5)*200;
+      const y = (Math.random()-0.5)*200;
+      noBtn.style.transform = `translate(${x}px,${y}px)`;
+    });
 
-  // Play music safely after click
-  music.play().catch(() => {});
-  
-  // Animate images one by one
-  const images = document.querySelectorAll(".gallery img");
-  images.forEach((img, i) => {
-    setTimeout(() => { img.style.opacity = 1; }, i * 500);
-  });
-});
+    /* ----------------------------
+       PHOTO SLIDESHOW
+    ---------------------------- */
+    const photos = document.querySelectorAll('.photo-card');
+    let index = 0;
 
-// NO button moves away
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 200 - 100;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-});
-</script>
+    function showPhotos(){
+      photos[index].style.display='block';
+      setInterval(()=>{
+        photos[index].style.display='none';
+        index = (index+1)%photos.length;
+        photos[index].style.display='block';
+      },2500);
+    }
 
+    /* ----------------------------
+       MUSIC TOGGLE
+    ---------------------------- */
+    musicBtn.addEventListener('click',()=>{
+      if(music.paused){ music.play(); musicBtn.textContent="🎵"; }
+      else{ music.pause(); musicBtn.textContent="🔇"; }
+    });
+  </script>
 </body>
 </html>
