@@ -1,217 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will You Be My Valentine?</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💗</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+    background: linear-gradient(135deg,#ffd6e8,#fff1f7);
+    color:#55001f;
+    text-align:center;
+    position:relative;
+  }
+  button { cursor:pointer; border:none; outline:none; }
 
-    body {
-      background: #ffe6f0;
-      overflow-x: hidden;
-      color: #55001f;
-      text-align: center;
-      min-height: 100vh;
-      position: relative;
-    }
+  /* FLOATING HEARTS */
+  .heart {
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:floatUp linear infinite;
+    opacity:.7;
+    pointer-events:none;
+    z-index:10;
+  }
+  @keyframes floatUp {
+    from { transform:translateY(0) scale(1); opacity:0.8; }
+    to { transform:translateY(-120vh) scale(1.5); opacity:0; }
+  }
 
-    button {
-      cursor: pointer;
-      border: none;
-      outline: none;
-    }
+  /* INTRO */
+  #intro {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    padding:20px;
+    transition:opacity 1s ease;
+  }
+  #intro h1 {
+    font-size:3rem;
+    margin-bottom:2rem;
+    font-family:'Pacifico', cursive;
+  }
+  .btn {
+    padding:12px 32px;
+    margin:0 10px;
+    font-size:1.2rem;
+    border-radius:30px;
+    transition: transform .3s ease;
+  }
+  #yesBtn { background:#ff4d88; color:white; }
+  #noBtn { background:#ffd6e8; color:#ff4d88; position:relative; }
 
-    /* INTRO */
-    #intro {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-    }
+  /* PROPOSAL PAGE */
+  #proposal {
+    display:none;
+    padding:30px 20px;
+    min-height:100vh;
+    background:url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+    color:white;
+    text-shadow:0px 0px 8px #000;
+    position:relative;
+  }
+  .gallery img {
+    width:90%;
+    max-width:400px;
+    border-radius:15px;
+    margin:1rem auto;
+    display:none;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    animation:fadeZoom 1s ease forwards;
+  }
+  @keyframes fadeZoom {
+    from {opacity:0; transform:scale(0.85);}
+    to {opacity:1; transform:scale(1);}
+  }
+  .love-text {
+    margin-top:1.5rem;
+    font-family:'Pacifico', cursive;
+    font-size:1.3rem;
+    background:rgba(255,255,255,0.6);
+    padding:20px;
+    border-radius:15px;
+    color:#500020;
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+  }
 
-    #intro h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      font-family: 'Pacifico', cursive;
-    }
+  /* MUSIC BUTTON */
+  #musicBtn {
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#ff4d88;
+    color:white;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    font-size:1.2rem;
+  }
 
-    .btn {
-      padding: 12px 32px;
-      margin: 0 10px;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      transition: transform .3s ease;
-    }
-
-    #yesBtn {
-      background: #ff4d88;
-      color: white;
-    }
-
-    #noBtn {
-      background: #ffd6e8;
-      color: #ff4d88;
-      position: relative;
-    }
-
-    /* PROPOSAL PAGE */
-    #proposal {
-      display: none;
-      padding: 30px 20px;
-      min-height: 100vh;
-      background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      color: white;
-      text-shadow: 0px 0px 8px #000;
-    }
-
-    .gallery img {
-      width: 90%;
-      max-width: 400px;
-      border-radius: 15px;
-      margin: 1rem auto;
-      display: none;
-      box-shadow: 0 10px 25px rgba(0,0,0,.3);
-      animation: fadeZoom 1s ease forwards;
-    }
-
-    @keyframes fadeZoom {
-      from { opacity: 0; transform: scale(0.85); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .love-text {
-      margin-top: 1.5rem;
-      font-family: 'Pacifico', cursive;
-      font-size: 1.3rem;
-      background: rgba(255,255,255,0.6);
-      padding: 20px;
-      border-radius: 15px;
-      color: #500020;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* MUSIC BUTTON */
-    #musicBtn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #ff4d88;
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-    }
-
-    @media(max-width:600px) {
-      #intro h1 { font-size: 2.2rem; }
-      .love-text { font-size: 1.1rem; }
-    }
-  </style>
+  @media(max-width:600px){
+    #intro h1{ font-size:2.2rem; }
+    .love-text{ font-size:1.1rem; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- Audio (starts after user consent) -->
-  <audio id="bgMusic" loop>
-    <source src="music/enna-sona.mp3" type="audio/mpeg">
-  </audio>
+<audio id="bgMusic" loop>
+  <source src="music/enna-sona.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn">🎵</button>
 
-  <button id="musicBtn">🎵</button>
-
-  <!-- INTRO -->
-  <div id="intro">
-    <h1>Will you be my Valentine?</h1>
-    <div>
-      <button class="btn" id="yesBtn">YES 💗</button>
-      <button class="btn" id="noBtn">NO</button>
-    </div>
+<div id="intro">
+  <h1>Will you be my Valentine?</h1>
+  <div>
+    <button class="btn" id="yesBtn">YES 💗</button>
+    <button class="btn" id="noBtn">NO</button>
   </div>
+</div>
 
-  <!-- PROPOSAL -->
-  <div id="proposal">
-    <div class="gallery">
-      <img src="images/photo1.jpg" alt="photo1">
-      <img src="images/photo2.jpg" alt="photo2">
-      <img src="images/photo3.jpg" alt="photo3">
-      <img src="images/photo4.jpg" alt="photo4">
-      <img src="images/photo5.jpg" alt="photo5">
-      <img src="images/photo6.jpg" alt="photo6">
-      <img src="images/photo7.jpg" alt="photo7">
-    </div>
-
-    <div class="love-text">
-      Dear Sahil,<br><br>
-      You are the best part of my life. Every Photo here reminds me how lucky I am to have you.
-      You make me smile without trying. You make my world brighter.
-      No matter what happens, I will always choose you. I love you forever. 💗
-    </div>
+<div id="proposal">
+  <div class="gallery">
+    <img src="images/photo1.jpg" alt="photo1">
+    <img src="images/photo2.jpg" alt="photo2">
+    <img src="images/photo3.jpg" alt="photo3">
+    <img src="images/photo4.jpg" alt="photo4">
+    <img src="images/photo5.jpg" alt="photo5">
+    <img src="images/photo6.jpg" alt="photo6">
+    <img src="images/photo7.jpg" alt="photo7">
   </div>
+  <div class="love-text">
+    Dear Sahil,<br><br>
+    You are the best part of my life. Every Photo here reminds me how lucky I am to have you.
+    You make me smile without trying. You make my world brighter.
+    No matter what happens, I will always choose you. I love you forever. 💗
+  </div>
+</div>
 
-  <script>
-    const yesBtn  = document.getElementById('yesBtn');
-    const noBtn   = document.getElementById('noBtn');
-    const intro   = document.getElementById('intro');
-    const proposal = document.getElementById('proposal');
-    const photos  = document.querySelectorAll('.gallery img');
-    const music   = document.getElementById('bgMusic');
-    const musicBtn= document.getElementById('musicBtn');
+<script>
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const intro = document.getElementById('intro');
+const proposal = document.getElementById('proposal');
+const photos = document.querySelectorAll('.gallery img');
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
 
-    let clickCount = 0;
+/* Floating hearts */
+function createHeart(){
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.textContent = '💗';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.animationDuration = 4 + Math.random()*3 + 's';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),8000);
+}
+setInterval(createHeart,500);
 
-    /* NO button moves on hover */
-    noBtn.addEventListener('mouseover', () => {
-      const x = (Math.random() - .5) * 180;
-      const y = (Math.random() - .5) * 180;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+/* NO moves away */
+noBtn.addEventListener('mouseover',()=>{
+  const x = (Math.random()-0.5)*180;
+  const y = (Math.random()-0.5)*180;
+  noBtn.style.transform = `translate(${x}px,${y}px)`;
+});
 
-    /* YES button grows and leads to proposal */
-    yesBtn.addEventListener('click', () => {
-      clickCount++;
-      yesBtn.style.transform = `scale(${1 + clickCount*0.2})`;
+/* YES opens immediately */
+yesBtn.addEventListener('click',()=>{
+  intro.style.display='none';
+  proposal.style.display='block';
+  music.play();
+  showPhotos();
+});
 
-      if (clickCount >= 3) {
-        intro.style.display = 'none';
-        proposal.style.display = 'block';
-        showPhotos();
-        music.play(); // sounds OK because user already interacted
-      }
-    });
+/* Photo slideshow */
+let index = 0;
+function showPhotos(){
+  photos[index].style.display='block';
+  setInterval(()=>{
+    photos[index].style.display='none';
+    index = (index+1)%photos.length;
+    photos[index].style.display='block';
+  },2500);
+}
 
-    /* Photo slideshow */
-    let index = 0;
-    function showPhotos() {
-      photos[index].style.display = 'block';
-      setInterval(() => {
-        photos[index].style.display = 'none';
-        index = (index + 1) % photos.length;
-        photos[index].style.display = 'block';
-      }, 2500);
-    }
-
-    /* Music toggle */
-    musicBtn.addEventListener('click', () => {
-      if (music.paused) {
-        music.play();
-        musicBtn.textContent = '🎵';
-      } else {
-        music.pause();
-        musicBtn.textContent = '🔇';
-      }
-    });
-  </script>
+/* Music toggle */
+musicBtn.addEventListener('click',()=>{
+  if(music.paused){ music.play(); musicBtn.textContent='🎵'; }
+  else { music.pause(); musicBtn.textContent='🔇'; }
+});
+</script>
 
 </body>
 </html>
