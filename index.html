@@ -1,155 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine's Proposal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+    <!-- Google Font for a soft, romantic look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-* {
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+    <style>
+        /* =====================
+           GLOBAL STYLES
+        ====================== */
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-body {
-    margin: 0;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-/* Intro Section */
-#intro {
-    text-align: center;
-    animation: fadeIn 1.2s ease;
-}
+        /* =====================
+           INTRO PAGE
+        ====================== */
+        .intro-page {
+            text-align: center;
+            animation: fadeIn 1.2s ease;
+        }
 
-h1 {
-    font-size: 2.2rem;
-    color: #fff;
-    margin-bottom: 2rem;
-}
+        .intro-page h1 {
+            color: #fff;
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+        }
 
-button {
-    border: none;
-    border-radius: 30px;
-    padding: 12px 28px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .intro-page button {
+            border: none;
+            border-radius: 30px;
+            padding: 12px 28px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 8px;
+        }
 
-#yes-button {
-    background-color: #ff4d6d;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 16px 40px;
-    margin-right: 10px;
-}
+        #yes-button {
+            background-color: #ff4d6d;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 16px 42px;
+        }
 
-#no-button {
-    background-color: #fff;
-    color: #ff4d6d;
-}
+        #no-button {
+            background-color: #fff;
+            color: #ff4d6d;
+        }
 
-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
+        .intro-page button:hover {
+            transform: scale(1.08);
+        }
 
-/* Second Page */
-#proposal {
-    display: none;
-    position: absolute;
-    inset: 0;
-    background: url("https://images.unsplash.com/photo-1526045612212-70caf35c14df") center/cover no-repeat;
-    animation: fadeIn 1.2s ease;
-}
+        /* =====================
+           PROPOSAL PAGE
+        ====================== */
+        .proposal-page {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: url("PUT_BACKGROUND_IMAGE_HERE") center/cover no-repeat;
+            animation: fadeIn 1.5s ease;
+        }
 
-/* Popup */
-.popup {
-    background: rgba(255, 255, 255, 0.95);
-    max-width: 340px;
-    padding: 25px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    animation: scaleUp 0.8s ease;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+        /* =====================
+           POPUP CARD
+        ====================== */
+        .popup {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 360px;
+            padding: 22px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: scaleUp 0.9s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-.popup img {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 15px;
-}
+        .popup img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
 
-.popup p {
-    color: #ff4d6d;
-    font-size: 1rem;
-    line-height: 1.6;
-}
+        .popup p {
+            color: #ff4d6d;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+        /* =====================
+           ANIMATIONS
+        ====================== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-@keyframes scaleUp {
-    from { transform: translate(-50%, -50%) scale(0.7); }
-    to { transform: translate(-50%, -50%) scale(1); }
-}
+        @keyframes scaleUp {
+            from { transform: translate(-50%, -50%) scale(0.7); }
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
 
-/* Responsive */
-@media (max-width: 500px) {
-    h1 {
-        font-size: 1.8rem;
-    }
+        /* =====================
+           RESPONSIVE DESIGN
+        ====================== */
+        @media (max-width: 500px) {
+            .intro-page h1 {
+                font-size: 1.9rem;
+            }
 
-    #yes-button {
-        margin-bottom: 10px;
-    }
-}
-</style>
+            #yes-button {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div id="intro">
-    <h1>Will you be my Valentine?</h1>
-    <button id="yes-button">Yes</button>
-    <button id="no-button">No</button>
-</div>
-
-<div id="proposal">
-    <div class="popup">
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Cute couple">
-        <p>
-            Every moment with you feels like a little love story of our own. 
-            Thank you for choosing me and for making my heart feel so full 💗
-        </p>
+    <!-- =====================
+         INTRO PAGE
+    ====================== -->
+    <div class="intro-page" id="intro">
+        <h1>Will you be my Valentine?</h1>
+        <button id="yes-button">Yes</button>
+        <button id="no-button">No</button>
     </div>
-</div>
 
-<script>
-const yesButton = document.getElementById("yes-button");
-const intro = document.getElementById("intro");
-const proposal = document.getElementById("proposal");
+    <!-- =====================
+         PROPOSAL PAGE
+    ====================== -->
+    <div class="proposal-page" id="proposal">
 
-yesButton.addEventListener("click", () => {
-    intro.style.display = "none";
-    proposal.style.display = "block";
-});
-</script>
+        <!-- Background Music -->
+        <audio id="bg-music" loop>
+            <source src="ENNA_SONA_SONG_FILE.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Popup Card -->
+        <div class="popup">
+            <img src="PUT_IMAGE_1_HERE" alt="Memory with Sahil">
+            <p>
+                <strong>Dear Sahil,</strong><br><br>
+                You are the best part of my life. Every photo here reminds me how lucky I am to have you.
+                You make me smile without trying. You make my world brighter.
+                No matter what happens, I will always choose you.
+                I love you forever. 💗
+            </p>
+        </div>
+    </div>
+
+    <!-- =====================
+         JAVASCRIPT
+    ====================== -->
+    <script>
+        const yesButton = document.getElementById("yes-button");
+        const introPage = document.getElementById("intro");
+        const proposalPage = document.getElementById("proposal");
+        const music = document.getElementById("bg-music");
+
+        // When "Yes" is clicked
+        yesButton.addEventListener("click", () => {
+            // Enlarge Yes button
+            yesButton.style.transform = "scale(1.3)";
+
+            // Short delay for effect
+            setTimeout(() => {
+                introPage.style.display = "none";
+                proposalPage.style.display = "block";
+                music.play();
+            }, 600);
+        });
+    </script>
 
 </body>
 </html>
