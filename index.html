@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For Sahil ❤️</title>
+<title>For Sahil 💗</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial;
-}
 
 body {
-    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+
+    /* BACKGROUND IMAGE FROM GITHUB */
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+
     text-align: center;
-    overflow-x: hidden;
 }
 
-/* INTRO SCREEN */
+/* INTRO PAGE */
 
 #intro {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #ff4d6d, #ff758c);
+    background: rgba(255, 77, 109, 0.95);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    z-index: 100;
 }
 
 button {
@@ -41,13 +40,11 @@ button {
     border-radius: 10px;
     font-size: 18px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 #yesBtn {
     background: white;
     color: #ff4d6d;
-    font-weight: bold;
 }
 
 #noBtn {
@@ -55,51 +52,23 @@ button {
     color: white;
 }
 
-/* MAIN CONTAINER */
+/* MAIN SECTION */
 
 .container {
     display: none;
-    background: white;
+    background: rgba(255,255,255,0.9);
     padding: 20px;
     margin: 30px auto;
     width: 90%;
     max-width: 800px;
     border-radius: 15px;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
-}
-
-h1 {
-    color: #ff4d6d;
-    margin-bottom: 10px;
-}
-
-/* PHOTO SECTION */
-
-.gallery {
-    margin-top: 20px;
-}
-
-.slideshow {
-    position: relative;
-    max-width: 320px;
-    margin: 20px auto;
 }
 
 .slideshow img {
-    width: 100%;
+    width: 300px;
     border-radius: 15px;
     display: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-/* TYPING MESSAGE */
-
-#message {
-    font-size: 17px;
-    color: #333;
-    margin-top: 15px;
-    line-height: 1.6;
-    padding: 10px;
+    margin: auto;
 }
 
 /* HEARTS */
@@ -107,7 +76,7 @@ h1 {
 .heart {
     position: fixed;
     top: -10px;
-    font-size: 20px;
+    font-size: 22px;
     animation: fall linear infinite;
 }
 
@@ -118,15 +87,8 @@ h1 {
 }
 
 .footer {
-    margin-top: 15px;
-    font-weight: bold;
     color: #ff4d6d;
-}
-
-.musicBtn {
-    background: #ff4d6d;
-    color: white;
-    margin-top: 10px;
+    font-weight: bold;
 }
 
 </style>
@@ -138,56 +100,52 @@ h1 {
     <source src="ennasona.mp3" type="audio/mpeg">
 </audio>
 
-<!-- INTRO PAGE -->
+<!-- INTRO -->
 
 <div id="intro">
-    <h2>Hey Sahil 😍</h2>
-    <h3>Will You Be My Valentine? 💘</h3>
+    <h2>Hey Sahil 💗</h2>
+    <h3>Will You Be My Valentine? 💗</h3>
 
-    <button id="yesBtn" onclick="openSite()">YES 🥰</button>
+    <button id="yesBtn" onclick="openSite()">YES 💗</button>
     <button id="noBtn" onclick="growYes()">NO 😢</button>
 </div>
 
-<!-- MAIN WEBSITE -->
+<!-- MAIN PAGE -->
 
 <div class="container" id="main">
 
-<h1>For My Sahil ❤️</h1>
+<h1>For My Sahil 💗</h1>
 
-<h2>Our Photo Memories 📸</h2>
+<h3>Our Memories 💗</h3>
 
-<div class="gallery">
-    <div class="slideshow">
-        <img class="slides" src="photo1.jpg">
-        <img class="slides" src="photo2.jpg">
-        <img class="slides" src="photo3.jpg">
-        <img class="slides" src="photo4.jpg">
-        <img class="slides" src="photo5.jpg">
-        <img class="slides" src="photo6.jpg">
-        <img class="slides" src="photo7.jpg">
-    </div>
+<div class="slideshow">
+    <img class="slides" src="photo1.jpg">
+    <img class="slides" src="photo2.jpg">
+    <img class="slides" src="photo3.jpg">
+    <img class="slides" src="photo4.jpg">
+    <img class="slides" src="photo5.jpg">
+    <img class="slides" src="photo6.jpg">
+    <img class="slides" src="photo7.jpg">
 </div>
 
-<button class="musicBtn" onclick="playSong()">Play Song 🎵</button>
+<button onclick="playSong()">Play Song 🎵</button>
 
 <p id="message"></p>
 
 <p class="footer">
 Forever Yours,<br>
-Sanika 💖
+Sanika 💗
 </p>
 
 </div>
 
 <script>
 
-let yesSize = 18;
+let size = 18;
 
 function growYes() {
-    yesSize += 10;
-    let btn = document.getElementById("yesBtn");
-    btn.style.fontSize = yesSize + "px";
-    btn.innerHTML = "YES PLEASE 🥺💖";
+    size += 10;
+    document.getElementById("yesBtn").style.fontSize = size + "px";
 }
 
 function openSite() {
@@ -195,30 +153,31 @@ function openSite() {
     document.getElementById("main").style.display = "block";
     playSong();
     startHearts();
-    startTyping();
     startSlideshow();
+    startTyping();
 }
 
 function playSong() {
-    document.getElementById("song").play();
+    let audio = document.getElementById("song");
+    audio.play();
 }
 
-/* HEART ANIMATION */
+/* HEARTS EFFECT WITH 💗 */
 
 function startHearts() {
     setInterval(() => {
         let heart = document.createElement("div");
         heart.className = "heart";
-        heart.innerHTML = "💖";
+        heart.innerHTML = "💗";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
         document.body.appendChild(heart);
 
         setTimeout(() => heart.remove(), 5000);
     }, 300);
 }
 
-/* 7 PHOTO SLIDESHOW */
+/* SLIDESHOW */
 
 let slideIndex = 0;
 
@@ -234,26 +193,23 @@ function startSlideshow() {
 
     slides[slideIndex-1].style.display = "block";
 
-    setTimeout(startSlideshow, 2200);
+    setTimeout(startSlideshow, 2300);
 }
 
-/* TYPING MESSAGE */
+/* TYPING TEXT */
 
-let text = `Dear Sahil 💌,
+let text = `Dear Sahil 💗
 
-These 7 photos are not just pictures – they are memories of us, our laughs, our moments, and our love.
+You are the best part of my life.  
+Every photo here reminds me how lucky I am to have you.
 
-Every moment spent with you becomes special automatically.
+You make me smile without trying.  
+You make my world brighter.
 
-You are my happiness, my comfort, my safe place, and my favorite person in this world 🌍
+No matter what happens,  
+I will always choose YOU.
 
-Thank you for loving me, caring for me, and always being there for me.
-
-I never want to lose you.
-
-No matter what happens, I will always choose YOU ❤️
-
-I love you more than words can ever express 💖`;
+I love you forever 💗`;
 
 let i = 0;
 
@@ -261,7 +217,7 @@ function startTyping() {
     if (i < text.length) {
         document.getElementById("message").innerHTML += text.charAt(i);
         i++;
-        setTimeout(startTyping, 35);
+        setTimeout(startTyping, 40);
     }
 }
 
