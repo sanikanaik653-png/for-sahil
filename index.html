@@ -8,14 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
   body {
-    font-family:'Poppins', sans-serif;
-    overflow-x:hidden;
     min-height:100vh;
-    background: linear-gradient(135deg,#ffd6e8,#fff1f7);
-    color:#55001f;
+    overflow-x:hidden;
     text-align:center;
+    background: linear-gradient(135deg,#ffe6f0,#fff9fb);
+    color:#55001f;
     position:relative;
   }
   button { cursor:pointer; border:none; outline:none; }
@@ -43,12 +42,12 @@
     align-items:center;
     height:100vh;
     padding:20px;
-    transition:opacity 1s ease;
   }
   #intro h1 {
     font-size:3rem;
     margin-bottom:2rem;
     font-family:'Pacifico', cursive;
+    color:#ff4d88;
   }
   .btn {
     padding:12px 32px;
@@ -57,32 +56,34 @@
     border-radius:30px;
     transition: transform .3s ease;
   }
-  #yesBtn { background:#ff4d88; color:white; }
-  #noBtn { background:#ffd6e8; color:#ff4d88; position:relative; }
+  #yesBtn { background:#ff85b3; color:white; }
+  #noBtn { background:#ffe3ef; color:#ff4d88; position:relative; }
 
   /* PROPOSAL PAGE */
   #proposal {
     display:none;
     padding:30px 20px;
     min-height:100vh;
-    background:url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-    color:white;
-    text-shadow:0px 0px 8px #000;
+    background: url('https://images.unsplash.com/photo-1508923567004-3a6b8004f3d1?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+    color:#55001f;
+    text-shadow:0px 0px 8px rgba(255,255,255,0.8);
     position:relative;
   }
+
   .gallery img {
     width:90%;
     max-width:400px;
     border-radius:15px;
     margin:1rem auto;
     display:none;
-    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
     animation:fadeZoom 1s ease forwards;
   }
   @keyframes fadeZoom {
     from {opacity:0; transform:scale(0.85);}
     to {opacity:1; transform:scale(1);}
   }
+
   .love-text {
     margin-top:1.5rem;
     font-family:'Pacifico', cursive;
@@ -90,7 +91,7 @@
     background:rgba(255,255,255,0.6);
     padding:20px;
     border-radius:15px;
-    color:#500020;
+    color:#55001f;
     max-width:700px;
     margin-left:auto;
     margin-right:auto;
@@ -101,7 +102,7 @@
     position:fixed;
     top:20px;
     right:20px;
-    background:#ff4d88;
+    background:#ff85b3;
     color:white;
     width:50px;
     height:50px;
