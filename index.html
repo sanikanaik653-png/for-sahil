@@ -2,93 +2,104 @@
 <html>
 <head>
 <title>For Sahil 💗</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
-
-    /* BACKGROUND IMAGE FROM GITHUB */
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-
-    text-align: center;
+body{
+  margin:0;
+  font-family:Arial;
+  background:url('background.jpg') center/cover fixed;
 }
 
 /* INTRO PAGE */
 
-#intro {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 77, 109, 0.95);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+#intro{
+  position:fixed;
+  inset:0;
+  background:#ff4d6d;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  z-index:10;
 }
 
-button {
-    padding: 12px 25px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    cursor: pointer;
+.teddyBox{
+  display:flex;
+  gap:20px;
+  margin-bottom:10px;
 }
 
-#yesBtn {
-    background: white;
-    color: #ff4d6d;
+.teddyBox img{
+  width:120px;
 }
 
-#noBtn {
-    background: black;
-    color: white;
+button{
+  padding:10px 20px;
+  margin:10px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
 }
 
-/* MAIN SECTION */
-
-.container {
-    display: none;
-    background: rgba(255,255,255,0.9);
-    padding: 20px;
-    margin: 30px auto;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 15px;
+#yesBtn{
+  background:white;
+  color:#ff4d6d;
 }
 
-.slideshow img {
-    width: 300px;
-    border-radius: 15px;
-    display: none;
-    margin: auto;
+#noBtn{
+  background:black;
+  color:white;
+}
+
+/* MAIN CONTENT */
+
+#main{
+  display:none;
+  padding:20px;
+  text-align:center;
+}
+
+.slideshow img{
+  width:300px;
+  border-radius:20px;
+  display:none;
+  margin:auto;
+}
+
+.nicknames{
+  margin-top:10px;
+}
+
+.nicknames span{
+  background:#ff4d6d;
+  color:white;
+  padding:6px 10px;
+  margin:5px;
+  border-radius:20px;
+  display:inline-block;
+}
+
+#paragraph{
+  margin-top:40px;
+  padding:20px;
+  font-size:18px;
+  line-height:1.6;
 }
 
 /* HEARTS */
 
-.heart {
-    position: fixed;
-    top: -10px;
-    font-size: 22px;
-    animation: fall linear infinite;
+.heart{
+  position:fixed;
+  top:-10px;
+  animation:fall linear;
+  font-size:20px;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
-}
-
-.footer {
-    color: #ff4d6d;
-    font-weight: bold;
+@keyframes fall{
+  to{transform:translateY(110vh);}
 }
 
 </style>
@@ -97,128 +108,134 @@ button {
 <body>
 
 <audio id="song" loop>
-    <source src="ennasona.mp3" type="audio/mpeg">
+  <source src="ennasona.mp3">
 </audio>
 
 <!-- INTRO -->
 
 <div id="intro">
-    <h2>Hey Sahil 💗</h2>
-    <h3>Will You Be My Valentine? 💗</h3>
 
-    <button id="yesBtn" onclick="openSite()">YES 💗</button>
-    <button id="noBtn" onclick="growYes()">NO 😢</button>
+<div class="teddyBox">
+  <img id="boy" src="boy.png">
+  <img id="girl" src="girl.png">
 </div>
 
-<!-- MAIN PAGE -->
+<h2>Will you be my Valentine? 💗</h2>
 
-<div class="container" id="main">
+<button id="yesBtn">YES 💗</button>
+<button id="noBtn">NO 😢</button>
 
-<h1>For My Sahil 💗</h1>
+<p id="reply"></p>
 
-<h3>Our Memories 💗</h3>
+</div>
+
+<!-- MAIN -->
+
+<div id="main">
+
+<h2>Our Memories 💗</h2>
 
 <div class="slideshow">
-    <img class="slides" src="photo1.jpg">
-    <img class="slides" src="photo2.jpg">
-    <img class="slides" src="photo3.jpg">
-    <img class="slides" src="photo4.jpg">
-    <img class="slides" src="photo5.jpg">
-    <img class="slides" src="photo6.jpg">
-    <img class="slides" src="photo7.jpg">
+  <img class="slide" src="photo1.jpg">
+  <img class="slide" src="photo2.jpg">
+  <img class="slide" src="photo3.jpg">
+  <img class="slide" src="photo4.jpg">
+  <img class="slide" src="photo5.jpg">
+  <img class="slide" src="photo6.jpg">
+  <img class="slide" src="photo7.jpg">
 </div>
 
-<button onclick="playSong()">Play Song 🎵</button>
+<div class="nicknames">
+  <span>Kuku</span>
+  <span>Halku Baby</span>
+  <span>Babu</span>
+  <span>Chiku</span>
+  <span>Cutu</span>
+  <span>Momo</span>
+  <span>Pillu</span>
+</div>
 
-<p id="message"></p>
+<div id="paragraph">
+<p>
+Dear Sahil 💗 <br><br>
 
-<p class="footer">
-Forever Yours,<br>
-Sanika 💗
+Every photo above holds a special memory of us.  
+You are my happiness, my safe place, my comfort.  
+With you everything feels easy and beautiful.  
+I feel lucky every single day that you are mine.  
+
+No matter what happens in life,  
+I will always choose YOU.  
+
+Thank you for being my person,  
+my love and my best friend.
+
+I love you forever Sahil 💗
 </p>
+</div>
 
 </div>
 
 <script>
 
-let size = 18;
+/* BUTTON LOGIC */
 
-function growYes() {
-    size += 10;
-    document.getElementById("yesBtn").style.fontSize = size + "px";
+let size=16;
+
+noBtn.onclick=()=>{
+
+  size+=6;
+  yesBtn.style.fontSize=size+"px";
+
+  girl.src="girl_sad.png";
+
+  reply.innerHTML="Please say YES Sahil 🥺";
 }
 
-function openSite() {
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("main").style.display = "block";
-    playSong();
-    startHearts();
-    startSlideshow();
-    startTyping();
+yesBtn.onclick=()=>{
+
+  boy.src="couple.png";
+  girl.style.display="none";
+
+  reply.innerHTML="I knew you would say YES 💗";
+
+  setTimeout(()=>{
+    intro.style.display="none";
+    main.style.display="block";
+    song.play();
+    hearts();
+    slideshow();
+  },1500);
 }
 
-function playSong() {
-    let audio = document.getElementById("song");
-    audio.play();
-}
+/* HEART EFFECT */
 
-/* HEARTS EFFECT WITH 💗 */
+function hearts(){
+  setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💗";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=3+Math.random()*2+"s";
+    document.body.appendChild(h);
 
-function startHearts() {
-    setInterval(() => {
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💗";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 5000);
-    }, 300);
+    setTimeout(()=>h.remove(),5000);
+  },300);
 }
 
 /* SLIDESHOW */
 
-let slideIndex = 0;
+let i=0;
+const slides=document.querySelectorAll(".slide");
 
-function startSlideshow() {
-    let slides = document.getElementsByClassName("slides");
+function slideshow(){
+  slides.forEach(s=>s.style.display="none");
 
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
+  i=(i+1)%slides.length;
 
-    slideIndex++;
-    if (slideIndex > slides.length) slideIndex = 1;
+  slides[i].style.display="block";
 
-    slides[slideIndex-1].style.display = "block";
-
-    setTimeout(startSlideshow, 2300);
-}
-
-/* TYPING TEXT */
-
-let text = `Dear Sahil 💗
-
-You are the best part of my life.  
-Every photo here reminds me how lucky I am to have you.
-
-You make me smile without trying.  
-You make my world brighter.
-
-No matter what happens,  
-I will always choose YOU.
-
-I love you forever 💗`;
-
-let i = 0;
-
-function startTyping() {
-    if (i < text.length) {
-        document.getElementById("message").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(startTyping, 40);
-    }
+  setTimeout(slideshow,2300);
 }
 
 </script>
